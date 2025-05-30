@@ -125,24 +125,22 @@ def show_comparison():
     time_data1 = get_ratings_over_time(movie1)
     time_data2 = get_ratings_over_time(movie2)
     
-    # Povprečna ocena skozi leta
     fig, ax = plt.subplots()
     ax.plot(time_data1['year'], time_data1[('rating', 'mean')], label=f"{movie1} - povp. ocena")
     ax.plot(time_data2['year'], time_data2[('rating', 'mean')], label=f"{movie2} - povp. ocena")
     ax.set_xlabel("Leto")
     ax.set_ylabel("Povprečna ocena")
     ax.legend()
-    st.subheader("📈 Povprečna ocena skozi leta")
+    st.subheader("Povprečna ocena skozi leta")
     st.pyplot(fig)
 
-    # Število ocen skozi leta
     fig2, ax2 = plt.subplots()
     ax2.plot(time_data1['year'], time_data1[('rating', 'count')], label=f"{movie1} - št. ocen")
     ax2.plot(time_data2['year'], time_data2[('rating', 'count')], label=f"{movie2} - št. ocen")
     ax2.set_xlabel("Leto")
     ax2.set_ylabel("Število ocen")
     ax2.legend()
-    st.subheader("📊 Število ocen skozi leta")
+    st.subheader("Število ocen skozi leta")
     st.pyplot(fig2)
 
 
@@ -214,7 +212,6 @@ def main():
                         st.rerun()
         return
 
-    # Show user info and logout button top-right
     col1, col2 = st.columns([9, 1])
     with col2:
         st.markdown(f"👤 {st.session_state['user_id']}")
@@ -222,7 +219,6 @@ def main():
             del st.session_state['user_id']
             st.rerun()
 
-    # Sidebar navigation
     page = st.sidebar.radio(
         "Navigacija",
         ["Analiza filmov", "Primerjava filmov", "Priporočila"]
