@@ -3,14 +3,13 @@ import pandas as pd
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-from sklearn.metrics.pairwise import cosine_similarity
 
 st.set_page_config(layout="wide")
 
 @st.cache_data
 def load_data():
     ratings = pd.read_csv('podatki/ml-latest-small/ratings.csv')
-    movies = pd.read_csv('podatki/ml-late   st-small/movies.csv')
+    movies = pd.read_csv('podatki/ml-latest-small/movies.csv')
     
     movies['year'] = movies['title'].str.extract(r'\((\d{4})\)')
     return ratings, movies
